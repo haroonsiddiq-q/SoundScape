@@ -78,7 +78,7 @@ defineProps({
                                         {{ concert.name }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ new Date(concert.start_show_date).toLocaleDateString('th-TH') }}
+                                        {{ new Date(concert.start_show_date).toLocaleDateString('en-US') }}
                                     </td>
                                     <td class="px-6 py-4">
                                         <Link :href="route('promoter.concert.edit', concert.id)"

@@ -164,7 +164,7 @@ const formattedDate = (dateString) => {
     try {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) return "Invalid Date";
-        return date.toLocaleDateString("th-TH", {
+        return date.toLocaleDateString("en-US", {
             year: "numeric",
             month: "short",
             day: "numeric",
@@ -183,7 +183,7 @@ const formattedTime = (timeString) => {
 
 const formattedPrice = (price) => {
     if (price == 0) return null;
-    return new Intl.NumberFormat("th-TH", {
+    return new Intl.NumberFormat("en-US", {
         maximumFractionDigits: 0,
     }).format(price);
 };
@@ -192,12 +192,12 @@ const formatCommentDate = (dateString) => {
     if (!dateString) return "";
     const dateObj = new Date(dateString);
 
-    const time = dateObj.toLocaleTimeString("th-TH", {
+    const time = dateObj.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
     });
 
-    const date = dateObj.toLocaleDateString("th-TH", {
+    const date = dateObj.toLocaleDateString("en-US", {
         month: "2-digit",
         day: "numeric",
     });
@@ -257,7 +257,7 @@ const getArtistPicture = computed(() => {
 const provinceName = computed(() => {
     if (props.provinces && props.concert && props.concert.province_id) {
         const province = props.provinces[props.concert.province_id];
-        return province ? province.name_th : "Unknown Province";
+        return province ? province.name_en : "Unknown Province";
     }
     return "N/A";
 });
@@ -287,7 +287,7 @@ const followConcert = (follow) => {
 <template>
     <div class="mx-auto max-w-5xl lg:max-w-7xl space-y-2 overflow-hidden relative">
         <div class="lg:flex p-6 space-y-2 lg:space-y-0 bg-card rounded-md overflow-auto">
-            <div class="flex-shrink-0 w-fit lg:mr-4">
+            <div class="flex-shrink-0 flex justify-center items-center bg-background lg:mr-4">
                 <div class="lg:h-[444px]">
                     <img :src="photoPreview" class="h-full object-cover rounded-md" alt="Concert Poster" />
                 </div>

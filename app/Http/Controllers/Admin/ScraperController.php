@@ -55,19 +55,18 @@ class ScraperController extends Controller
 
         $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
         $pythonPath = $isWindows
-            ? base_path('scraper/venv/Scripts/python.exe')
-            : base_path('scraper/venv/bin/python');
+            ? base_path('scraper' . DIRECTORY_SEPARATOR . '.venv' . DIRECTORY_SEPARATOR . 'Scripts' . DIRECTORY_SEPARATOR . 'python.exe')
+            : base_path('scraper/.venv/bin/python');
 
-        $scriptPath = base_path("scraper/master_runner.py");
+        $scriptPath = base_path('scraper' . DIRECTORY_SEPARATOR . 'master_runner.py');
+        $logPath = storage_path('logs' . DIRECTORY_SEPARATOR . 'scraper_debug.log');
 
         $websiteArg = $request->target_website ?: "none";
         $fileArg = $filePath ?: "none";
         $args = "{$request->target_type} {$websiteArg} {$job->id} \"{$fileArg}\"";
 
-        $logPath = storage_path('logs/scraper_debug.log');
-
         if ($isWindows) {
-            $batPath = storage_path('logs/run_scraper.bat');
+            $batPath = storage_path('logs' . DIRECTORY_SEPARATOR . 'run_scraper.bat');
             
             $batContent = "chcp 65001 > NUL\n"; 
             $batContent .= "set PYTHONIOENCODING=utf-8\n"; 

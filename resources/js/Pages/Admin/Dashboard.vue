@@ -72,10 +72,10 @@ defineProps({
                                         {{ concert.promoter?.business_name || concert?.origin }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ new Date(concert.created_at).toLocaleDateString('th-TH') }}
+                                        {{ new Date(concert.created_at).toLocaleDateString('en-US') }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ new Date(concert.updated_at).toLocaleDateString('th-TH') }}
+                                        {{ new Date(concert.updated_at).toLocaleDateString('en-US') }}
                                     </td>
                                 </tr>
                                 <tr v-if="recentConcerts.length === 0">

@@ -56,7 +56,7 @@ class ConcertController extends Controller
 
             if (empty($data['province_id']) && !empty($data['province_name'])) {
                 $name = $data['province_name'];
-                $prov = Province::where('name_en', $name)->orWhere('name_th', $name)->first();
+                $prov = Province::where('name_th', $name)->orWhere('name_en', $name)->first();
                 if ($prov) {
                     $data['province_id'] = $prov->id;
                 }

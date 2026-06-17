@@ -29,7 +29,7 @@ const pictureUrl = computed(() => {
 const provinceName = computed(() => {
     if (props.provinces && props.concert && props.concert.province_id) {
         const province = props.provinces[props.concert.province_id];
-        return province ? province.name_th : "Unknown Province";
+        return province ? province.name_en : "Unknown Province";
     }
     return "?";
 });
@@ -37,7 +37,7 @@ const provinceName = computed(() => {
 const formattedDate = computed(() => {
     if (props.concert && props.concert.start_show_date) {
         const date = new Date(props.concert.start_show_date);
-        return date.toLocaleDateString("th-TH", {
+        return date.toLocaleDateString("en-US", {
             day: "2-digit",
             month: "long",
             year: "numeric",
@@ -51,7 +51,7 @@ const formattedPrice = computed(() => {
         if (props.concert.price_min === 0) {
             return "Free";
         }
-        return new Intl.NumberFormat("th-TH", {
+        return new Intl.NumberFormat("en-US", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
         }).format(props.concert.price_min) + " THB";

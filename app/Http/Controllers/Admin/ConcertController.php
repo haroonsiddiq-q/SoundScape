@@ -56,7 +56,7 @@ class ConcertController extends Controller
             $province = Province::find($validated['province_id']);
 
             if ($province) {
-                $queryString = urlencode($validated['venue_name'] . ', ' . $province->name_th . ', Thailand');
+                $queryString = urlencode($validated['venue_name'] . ', ' . $province->name_en . ', Thailand');
                 $url = "https://nominatim.openstreetmap.org/search?q={$queryString}&format=json&limit=1&accept-language=th,en";
 
                 $response = Http::withHeaders([
@@ -162,7 +162,7 @@ class ConcertController extends Controller
             $province = Province::find($validated['province_id']);
 
             if ($province) {
-                $queryString = urlencode($validated['venue_name'] . ', ' . $province->name_th . ', Thailand');
+                $queryString = urlencode($validated['venue_name'] . ', ' . $province->name_en . ', Thailand');
                 $url = "https://nominatim.openstreetmap.org/search?q={$queryString}&format=json&limit=1&accept-language=th,en";
 
                 $response = Http::withHeaders([

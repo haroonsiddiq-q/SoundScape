@@ -32,13 +32,13 @@ const filteredProvinces = computed(() => {
   }
   const lowerCaseQuery = searchQuery.value.toLowerCase();
   return provinces.value.filter(province =>
-    province.name_th.toLowerCase().includes(lowerCaseQuery)
+    province.name_en.toLowerCase().includes(lowerCaseQuery)
   );
 });
 
 const formattedOptions = computed(() => {
   return filteredProvinces.value.map(province => ({
-    name: province.name_th,
+    name: province.name_en,
     value: province.id,
   }));
 });

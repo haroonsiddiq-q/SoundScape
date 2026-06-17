@@ -116,7 +116,7 @@ onMounted(() => {
                     (p) => p.id === props.form.province_id,
                 );
                 if (initialProvince)
-                    selectedProvinceName.value = initialProvince.name_th;
+                    selectedProvinceName.value = initialProvince.name_en;
             }
         })
         .catch((error) => console.error("Error fetching provinces:", error));
@@ -273,7 +273,7 @@ const openMap = () => {
             (p) => p.id === props.form.province_id,
         );
         if (initialProvince)
-            selectedProvinceName.value = initialProvince.name_th;
+            selectedProvinceName.value = initialProvince.name_en;
     }
 };
 
@@ -344,7 +344,7 @@ async function reverseGeocode(latlng) {
                 );
                 if (matchingProvince) {
                     props.form.province_id = matchingProvince.id;
-                    selectedProvinceName.value = matchingProvince.name_th;
+                    selectedProvinceName.value = matchingProvince.name_en;
                 } else {
                     props.form.province_id = null;
                     selectedProvinceName.value = "Not Found";

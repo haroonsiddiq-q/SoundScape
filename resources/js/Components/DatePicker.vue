@@ -35,7 +35,7 @@ const format = (date) => {
     if (!date) {
         return props.placeholder;
     }
-    return new Intl.DateTimeFormat("th-TH", { dateStyle: "medium" }).format(
+    return new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(
         new Date(date)
     );
 };
