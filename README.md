@@ -2,8 +2,6 @@
 
 A comprehensive web application for discovering, managing, and promoting concerts with integrated web scraping capabilities.
 
-**English** | [Thai Version (ไทย)](README-TH.md)
-
 > ⚠️ **Note:** This is a student project created for educational and learning purposes only. It is not intended for profit or commercial use.
 
 ---
@@ -111,6 +109,11 @@ A comprehensive web application for discovering, managing, and promoting concert
 7. **Build frontend assets**
    ```bash
    npm run build
+   ```
+
+8. **Storage Link**
+   ```bash
+   php artisan storage:link
    ```
 
 ### Running the Application
@@ -222,16 +225,12 @@ SoundScape/
 ### Environment Variables
 
 ```env
-APP_NAME=SoundScape
-APP_ENV=local
-APP_DEBUG=true
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=soundscape
 DB_USERNAME=root
 DB_PASSWORD=
-SCRAPER_BASE_PATH=scraper
 ```
 
 ### Python Scraper Configuration
