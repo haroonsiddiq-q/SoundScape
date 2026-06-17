@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'previous' => '&laquo; ย้อนกลับ',
-    'next' => 'ถัดไป &raquo;',
+    'previous' => '&laquo; Previous',
+    'next' => 'Next &raquo;',
 
 ];

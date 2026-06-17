@@ -26,7 +26,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 const isDarkMode = inject("isDarkMode");
 
-const thaiDayNames = ref(["จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"]);
+const dayNames = ref(["M", "T", "W", "T", "F", "S", "S"]);
 
 const currentYear = new Date().getFullYear() - 1;
 const yearRange = [currentYear, currentYear + 11];
@@ -44,7 +44,7 @@ const format = (date) => {
 <template>
     <div :style="{ width: !modelValue ? '160px' : '130px' }" class="transition-all duration-300">
         <VueDatePicker :model-value="modelValue" @update:model-value="emit('update:modelValue', $event)"
-            model-type="yyyy-MM-dd" locale="th" month-name-format="long" :day-names="thaiDayNames"
+            model-type="yyyy-MM-dd" locale="th" month-name-format="long" :day-names="dayNames"
             :enable-time-picker="false" :dark="isDarkMode" :min-date="minDate" :max-date="maxDate" :start-date="minDate"
             :year-range="yearRange" auto-apply input-class-name="!hidden" no-today>
             <template #dp-input="{ value }">

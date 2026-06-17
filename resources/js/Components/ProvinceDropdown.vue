@@ -49,7 +49,7 @@ const selectedProvince = computed({
 });
 
 const placeholderText = computed(() => {
-  return isLoading.value ? 'Loading...' : 'กรุณาเลือกจังหวัด';
+  return isLoading.value ? 'Loading...' : 'Please select a province';
 });
 
 function updateSearchQuery(query) {

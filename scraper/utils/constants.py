@@ -85,7 +85,7 @@ special_places_map = {
 valid_provinces = [
     # ภาคกลาง & ตะวันออก & ตะวันตก
     "กรุงเทพมหานคร", "Bangkok", "กาญจนบุรี", "Kanchanaburi", "จันทบุรี", "Chanthaburi", 
-    "ฉะเชิงเทรา", "Chachoengsao", "ชลบุรี", "Chon Buri", "ชัยนาท", "Chai Nat", 
+    "ฉะเชิงเทรา", "Chachoengsao", "ชDeleteุรี", "Chon Buri", "ชัยนาท", "Chai Nat", 
     "ตราด", "Trat", "นครนายก", "Nakhon Nayok", "นครปฐม", "Nakhon Pathom", 
     "นครสวรรค์", "Nakhon Sawan", "นนทบุรี", "Nonthaburi", "ปทุมธานี", "Pathum Thani", 
     "ประจวบคีรีขันธ์", "Prachuap Khiri Khan", "ปราจีนบุรี", "Prachin Buri", 

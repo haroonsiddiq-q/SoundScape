@@ -20,8 +20,8 @@ const uploadedPhotoUrl = ref(null);
 const photoInput = ref(null);
 
 const fieldLabels = {
-    picture_url: "รูปโปรไฟล์",
-    name: "ชื่อศิลปิน",
+    picture_url: "Picture",
+    name: "Artist Name",
 };
 
 const photoPreview = computed(() => {
@@ -95,8 +95,8 @@ const submit = () => {
             class="max-w-fit bg-card lg:shadow-xl rounded-md mb-4 p-6">
             <div>
                 <div class="flex flex-col w-full space-y-2">
-                    <span class="text-lg font-semibold text-primary">โอ๊ะ! เกิดข้อผิดพลาด</span>
-                    <span class="text-sm">กรุณาตรวจสอบข้อมูลในช่องที่มีกรอบเส้นประอีกครั้ง</span>
+                    <span class="text-lg font-semibold text-primary">Oops! Something went wrong.</span>
+                    <span class="text-sm">Please check the fields with dashed borders.</span>
                     <ul
                         class="list-disc list-inside space-y-1 pl-5 bg-background p-4 rounded-md outline-dashed -outline-offset-4 text-primary">
                         <li v-for="(errorMessages, fieldName) in form.errors" :key="fieldName"
@@ -133,7 +133,7 @@ const submit = () => {
                         :class="{
                             'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                 form.errors.name,
-                        }" placeholder="ชื่อศิลปิน" />
+                        }" placeholder="Artist Name" />
                     <button type="submit" :disabled="form.processing"
                         class="whitespace-nowrap px-1 py-2 bg-primary text-white font-semibold rounded-md shadow-md hover:bg-primary-hover transition-colors duration-200 disabled:opacity-50">
                         <DocumentPlusIcon class="w-5 h-5" />

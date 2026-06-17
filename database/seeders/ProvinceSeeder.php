@@ -22,7 +22,7 @@ class ProvinceSeeder extends Seeder
             ['name_th' => 'ขอนแก่น', 'name_en' => 'Khon Kaen'],
             ['name_th' => 'จันทบุรี', 'name_en' => 'Chanthaburi'],
             ['name_th' => 'ฉะเชิงเทรา', 'name_en' => 'Chachoengsao'],
-            ['name_th' => 'ชลบุรี', 'name_en' => 'Chon Buri'],
+            ['name_th' => 'ชDeleteุรี', 'name_en' => 'Chon Buri'],
             ['name_th' => 'ชัยนาท', 'name_en' => 'Chai Nat'],
             ['name_th' => 'ชัยภูมิ', 'name_en' => 'Chaiyaphum'],
             ['name_th' => 'ชุมพร', 'name_en' => 'Chumphon'],

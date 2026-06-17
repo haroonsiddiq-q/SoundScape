@@ -35,45 +35,45 @@ const isDarkMode = inject("isDarkMode");
 const isEditMode = computed(() => !!props.concert);
 
 const eventTypes = [
-    { value: "music_festival", name: "เทศกาลดนตรี" },
-    { value: "concert", name: "คอนเสิร์ต" },
-    { value: "club", name: "คลับ / ผับ" },
-    { value: "fan_meeting", name: "แฟนมีตติ้ง" },
-    { value: "folk", name: "เพลงพื้นบ้าน / หมอลำ" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "music_festival", name: "Music Festival" },
+    { value: "concert", name: "Concert" },
+    { value: "club", name: "Club / Pub" },
+    { value: "fan_meeting", name: "Fan Meeting" },
+    { value: "folk", name: "Folk Music" },
+    { value: "other", name: "Other" },
 ];
 
 const genres = [
-    { value: "pop", name: "ป๊อป" },
-    { value: "rock", name: "ร็อก" },
-    { value: "hiphop", name: "ฮิปฮอป" },
-    { value: "jazz", name: "แจ๊ส" },
-    { value: "classical", name: "คลาสสิก" },
-    { value: "country", name: "ลูกทุ่ง / คันทรี่" },
-    { value: "edm", name: "อีดีเอ็ม (EDM)" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "pop", name: "Pop" },
+    { value: "rock", name: "Rock" },
+    { value: "hiphop", name: "Hip Hop" },
+    { value: "jazz", name: "Jazz" },
+    { value: "classical", name: "Classical" },
+    { value: "country", name: "Country" },
+    { value: "edm", name: "EDM" },
+    { value: "other", name: "Other" },
 ];
 
 const fieldLabels = {
-    name: "ชื่องานดนตรี",
-    event_type: "ประเภทงาน",
-    genre: "ประเภทเพลง",
-    ticket_link: "ลิงก์จำหน่ายบัตร",
-    start_sale_date: "วันจำหน่ายบัตร",
-    end_sale_date: "วันสิ้นสุดการจำหน่าย",
-    start_show_date: "วันที่แสดง",
-    end_show_date: "สิ้นสุดการแสดง",
-    start_show_time: "เวลาแสดง",
-    end_show_time: "เวลาสิ้นสุด",
-    price_min: "ราคาเริ่มต้น",
-    price_max: "ราคาสูงสุด",
-    latitude: "ตำแหน่งที่ตั้ง",
-    longitude: "ตำแหน่งที่ตั้ง",
-    province_id: "จังหวัด",
-    venue_name: "ชื่อสถานที่จัดงาน",
-    artist_ids: "ศิลปิน",
-    description: "รายละเอียดงานดนตรี",
-    picture_url: "รูปภาพ",
+    name: "Concert Name",
+    event_type: "Event Type",
+    genre: "Genre",
+    ticket_link: "Ticket Link",
+    start_sale_date: "Start Sale Date",
+    end_sale_date: "End Sale Date",
+    start_show_date: "Start Show Date",
+    end_show_date: "End Show Date",
+    start_show_time: "Start Show Time",
+    end_show_time: "End Show Time",
+    price_min: "Minimum Price",
+    price_max: "Maximum Price",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    province_id: "Province",
+    venue_name: "Venue Name",
+    artist_ids: "Artists",
+    description: "Description",
+    picture_url: "Picture",
 };
 
 const errorSummary = ref(null);
@@ -347,13 +347,13 @@ async function reverseGeocode(latlng) {
                     selectedProvinceName.value = matchingProvince.name_th;
                 } else {
                     props.form.province_id = null;
-                    selectedProvinceName.value = "ไม่พบ";
+                    selectedProvinceName.value = "Not Found";
                 }
             }
         }
     } catch (error) {
         props.form.province_id = null;
-        selectedProvinceName.value = "ผิดพลาด";
+        selectedProvinceName.value = "Error";
     } finally {
         isGeocoding.value = false;
     }
@@ -403,8 +403,8 @@ watch(
         class="max-w-xl lg:max-w-full mx-auto bg-card lg:shadow-xl rounded-md mb-4 p-6">
         <div>
             <div class="flex flex-col w-full space-y-2">
-                <span class="text-lg font-semibold text-primary">โอ๊ะ! เกิดข้อผิดพลาด</span>
-                <span class="text-sm">กรุณาตรวจสอบข้อมูลในช่องที่มีกรอบเส้นประอีกครั้ง</span>
+                <span class="text-lg font-semibold text-primary">Oops! Something went wrong.</span>
+                <span class="text-sm">Please check the fields with dashed borders.</span>
                 <ul
                     class="list-disc list-inside space-y-1 pl-5 bg-background p-4 rounded-md outline-dashed -outline-offset-4 text-primary">
                     <li v-for="(errorMessages, fieldName) in props.form.errors" :key="fieldName"
@@ -431,12 +431,12 @@ watch(
             </div>
             <div class="flex flex-shrink-0 flex-col min-w-[300px] justify-between pb-2">
                 <div class="flex space-x-4">
-                    <DropdownSelector placeholder="ประเภทงาน" v-model="props.form.event_type" :options="eventTypes"
+                    <DropdownSelector placeholder="Event Type" v-model="props.form.event_type" :options="eventTypes"
                         :class="{
                             'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                 props.form.errors.event_type,
                         }" />
-                    <DropdownSelector placeholder="ประเภทเพลง" v-model="props.form.genre" :options="genres" :class="{
+                    <DropdownSelector placeholder="Genre" v-model="props.form.genre" :options="genres" :class="{
                         'outline-dashed outline-primary -outline-offset-4 rounded-md':
                             props.form.errors.genre,
                     }" />
@@ -446,7 +446,7 @@ watch(
                     :class="{
                         'outline-dashed outline-primary -outline-offset-4 rounded-md':
                             props.form.errors.name,
-                    }" placeholder="ชื่องานดนตรี" />
+                    }" placeholder="Concert Name" />
 
                 <div class="flex items-center space-x-8 ml-12 mt-4">
                     <HeartIcon class="flex-none h-8 w-8 text-primary" />
@@ -456,7 +456,7 @@ watch(
                         :class="{
                             'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                 props.form.errors.ticket_link,
-                        }" placeholder="ลิงก์จำหน่ายบัตร" />
+                        }" placeholder="Ticket Link" />
                 </div>
 
                 <div class="flex flex-col mt-12 space-y-2 pl-2">
@@ -469,11 +469,11 @@ watch(
                         </template>
                         <template #startInput>
                             <DatePicker v-model="props.form.start_sale_date" :max-date="props.form.end_sale_date"
-                                placeholder="วันจำหน่ายบัตร" :error="props.form.errors.start_sale_date" />
+                                placeholder="Start Sale Date" :error="props.form.errors.start_sale_date" />
                         </template>
                         <template #endInput>
                             <DatePicker v-model="props.form.end_sale_date" :min-date="props.form.start_sale_date"
-                                placeholder="วันสิ้นสุดการจำหน่าย" :error="props.form.errors.end_sale_date" />
+                                placeholder="End Sale Date" :error="props.form.errors.end_sale_date" />
                         </template>
                     </AnimatedRangeInput>
 
@@ -485,12 +485,12 @@ watch(
                             </div>
                         </template>
                         <template #startInput>
-                            <DatePicker v-model="props.form.start_show_date" placeholder="วันที่แสดง"
+                            <DatePicker v-model="props.form.start_show_date" placeholder="Start Show Date"
                                 :min-date="isEditMode ? null : new Date()" :max-date="props.form.end_show_date"
                                 :error="props.form.errors.start_show_date" />
                         </template>
                         <template #endInput>
-                            <DatePicker v-model="props.form.end_show_date" placeholder="สิ้นสุดการแสดง"
+                            <DatePicker v-model="props.form.end_show_date" placeholder="End Show Date"
                                 :min-date="props.form.start_show_date" :error="props.form.errors.end_show_date" />
                         </template>
                     </AnimatedRangeInput>
@@ -503,11 +503,11 @@ watch(
                             </div>
                         </template>
                         <template #startInput>
-                            <TimePicker v-model="props.form.start_show_time" placeholder="เวลาแสดง"
+                            <TimePicker v-model="props.form.start_show_time" placeholder="Start Show Time"
                                 :error="props.form.errors.start_show_time" />
                         </template>
                         <template #endInput>
-                            <TimePicker v-model="props.form.end_show_time" placeholder="เวลาสิ้นสุด"
+                            <TimePicker v-model="props.form.end_show_time" placeholder="End Show Time"
                                 :error="props.form.errors.end_show_time" />
                         </template>
                     </AnimatedRangeInput>
@@ -523,13 +523,13 @@ watch(
                                 :class="{
                                     'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                         props.form.errors.price_min,
-                                }" placeholder="ราคาเริ่มต้น" /></template>
+                                }" placeholder="Minimum Price" /></template>
                         <template #endInput><input type="number" v-model="props.form.price_max"
                                 class="bg-background rounded-md text-sm font-medium border-none focus:ring-transparent placeholder:font-normal placeholder:text-text-medium w-[100px]"
                                 :class="{
                                     'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                         props.form.errors.price_max,
-                                }" placeholder="ราคาสูงสุด" /></template>
+                                }" placeholder="Maximum Price" /></template>
                     </AnimatedRangeInput>
 
                     <div class="flex items-start space-x-2">
@@ -539,8 +539,8 @@ watch(
                             " separator="," :is-long="true" class="grow">
                             <template #icon>
                                 <button type="button" @click="toggleLocationMode" :title="locationMode === 'manual'
-                                    ? 'เลือกจากแผนที่'
-                                    : 'กรอกด้วยตนเอง'
+                                    ? 'Select from map'
+                                    : 'Enter manually'
                                     ">
                                     <div
                                         class="flex items-center space-x-1 mr-2 border-2 border-primary rounded-md px-2 py-1">
@@ -563,7 +563,7 @@ watch(
                                         <span class="text-text-medium">{{
                                             selectedCoordinates
                                         }}</span></span>
-                                    <span v-else>เลือกตำแหน่งที่ตั้งจากแผนที่</span>
+                                    <span v-else>Select location from map</span>
                                 </button>
                                 <ProvinceDropdown v-if="locationMode === 'manual'" v-model="props.form.province_id"
                                     :provinces="allProvinces" :class="{
@@ -579,14 +579,14 @@ watch(
                                         :class="{
                                             'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                                 props.form.errors.venue_name,
-                                        }" placeholder="ชื่อสถานที่จัดงาน" />
+                                        }" placeholder="Venue Name" />
                                 </div>
                             </template>
                         </AnimatedRangeInput>
                     </div>
                     <div class="flex text-sm space-x-4 ml-2.5">
                         <ArrowTurnLeftUpIcon class="h-4 w-4 inline-block" />
-                        <span class="mt-0.5">คลิกเพื่อเปลี่ยนโหมดเลือกตำแหน่ง</span>
+                        <span class="mt-0.5">Click to change location mode</span>
                     </div>
                 </div>
             </div>
@@ -594,7 +594,7 @@ watch(
 
         <div class="p-6 bg-card rounded-md">
             <div class="flex flex-col">
-                <h3 class="font-bold text-xl pb-2">คำอธิบาย</h3>
+                <h3 class="font-bold text-xl pb-2">Description</h3>
                 <div class="w-full space-y-2">
                     <div class="w-full h-full px-2 py-4 bg-background rounded-md space-y-2">
                         <div class="flex flex-wrap items-center gap-y-2 gap-x-1 mx-2 bg-transparent">
@@ -609,7 +609,7 @@ watch(
                                             class="group flex items-center bg-card hover:bg-primary py-1 px-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-150">
                                             <PlusIcon
                                                 class="h-4 w-4 stroke-current stroke-[3px] text-primary group-hover:text-white" />
-                                            <span class="mx-1 group-hover:text-white uppercase">Singer</span>
+                                            <span class="mx-1 group-hover:text-white uppercase">Add Artist</span>
                                         </div>
                                     </template>
                                 </ArtistDropdown>
@@ -632,7 +632,7 @@ watch(
                             :class="{
                                 'outline-dashed outline-primary -outline-offset-4 rounded-md':
                                     props.form.errors.description,
-                            }" placeholder="รายละเอียดงานดนตรี"></textarea>
+                            }" placeholder="Description"></textarea>
                     </div>
                 </div>
             </div>
@@ -643,10 +643,10 @@ watch(
             :disabled="props.form.processing">
             <FolderArrowDownIcon class="w-4 h-4 stroke-current stroke-[2.5px]" />
             <span v-if="props.form.processing">{{
-                isEditMode ? "กำลังอัปเดต..." : "กำลังสร้าง..."
+                isEditMode ? "Updating..." : "Creating..."
             }}</span>
             <span v-else>{{
-                isEditMode ? "อัปเดตงานดนตรี" : "สร้างงานดนตรี"
+                isEditMode ? "Update Concert" : "Create Concert"
             }}</span>
         </button>
 
@@ -658,11 +658,11 @@ watch(
                     <div class="flex justify-between items-center">
                         <h3
                             class="text-lg flex flex-col sm:flex-row items-start sm:items-center sm:space-x-2 font-medium leading-6">
-                            <span>เลือกตำแหน่งที่ตั้ง</span>
+                            <span>Choose Location</span>
                             <span v-if="isGeocoding"
-                                class="text-sm font-normal text-text-medium">(กำลังค้นหาจังหวัด...)</span>
+                                class="text-sm font-normal text-text-medium">(Searching for province...)</span>
                             <span v-else-if="selectedLocation" class="text-sm font-normal text-text-medium">({{
-                                selectedProvinceName }} - พิกัด:
+                                selectedProvinceName }} - Coordinates:
                                 {{ modalSelectedCoordinates }})</span>
                         </h3>
                         <button @click="closeModal" class="hover:text-text-hover">
@@ -673,8 +673,8 @@ watch(
                     <button type="button" @click="confirmLocation"
                         class="rounded-md w-full bg-primary px-4 py-2 font-bold text-white hover:bg-primary-hover disabled:opacity-50"
                         :disabled="!selectedLocation || isGeocoding">
-                        <span v-if="isGeocoding">กำลังค้นหา...</span>
-                        <span v-else>ยืนยันตำแหน่ง</span>
+                        <span v-if="isGeocoding">Searching...</span>
+                        <span v-else>Confirm Location</span>
                     </button>
                 </div>
             </div>

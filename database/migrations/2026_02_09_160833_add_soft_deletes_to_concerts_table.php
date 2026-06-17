@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('concerts', function (Blueprint $table) {
-            $table->softDeletes(); // เพิ่มคอลัมน์ deleted_at
+            $table->softDeletes();
         });
     }
 

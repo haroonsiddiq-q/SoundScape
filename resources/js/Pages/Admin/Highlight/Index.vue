@@ -170,7 +170,7 @@ const getPictureUrl = (highlight) => {
                             "
                             class="flex items-center px-2 h-8 w-fit space-x-1 bg-secondary hover:bg-primary-hover rounded-md transition-colors duration-200">
                             <PencilIcon class="w-4 h-4" />
-                            <span>แก้ไข</span>
+                            <span>Edit</span>
                         </Link>
                         <Link :href="route('admin.highlight.delete', {
                             highlight: highlight.id,
@@ -178,7 +178,7 @@ const getPictureUrl = (highlight) => {
                             " method="delete"
                             class="flex items-center px-2 h-8 w-fit space-x-1 bg-red-600 hover:bg-red-700 rounded-md transition-colors duration-200">
                             <TrashIcon class="w-4 h-4" />
-                            <span>ลบ</span>
+                            <span>Delete</span>
                         </Link>
                     </td>
                 </tr>

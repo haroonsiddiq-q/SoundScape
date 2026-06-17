@@ -67,7 +67,7 @@ const submitEdit = (commentId) => {
 };
 
 const deleteComment = (commentId) => {
-    if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบความคิดเห็นนี้?")) {
+    if (confirm("Are you sure you want to delete this comment?")) {
         const routeName = `${getRoutePrefix()}concert.comment.destroy`;
         router.delete(route(routeName, commentId), {
             preserveScroll: true,
@@ -105,23 +105,23 @@ const deleteRouteName = computed(() => {
 });
 
 const eventTypes = [
-    { value: "music_festival", name: "เทศกาลดนตรี" },
-    { value: "concert", name: "คอนเสิร์ต" },
-    { value: "club", name: "คลับ / ผับ" },
-    { value: "fan_meeting", name: "แฟนมีตติ้ง" },
-    { value: "folk", name: "เพลงพื้นบ้าน / หมอลำ" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "music_festival", name: "Music Festival" },
+    { value: "concert", name: "Concert" },
+    { value: "club", name: "Club / Pub" },
+    { value: "fan_meeting", name: "Fan Meeting" },
+    { value: "folk", name: "Folk Music" },
+    { value: "other", name: "Other" },
 ];
 
 const genres = [
-    { value: "pop", name: "ป๊อป" },
-    { value: "rock", name: "ร็อก" },
-    { value: "hiphop", name: "ฮิปฮอป" },
-    { value: "jazz", name: "แจ๊ส" },
-    { value: "classical", name: "คลาสสิก" },
-    { value: "country", name: "ลูกทุ่ง / คันทรี่" },
-    { value: "edm", name: "อีดีเอ็ม (EDM)" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "pop", name: "Pop" },
+    { value: "rock", name: "Rock" },
+    { value: "hiphop", name: "Hip Hop" },
+    { value: "jazz", name: "Jazz" },
+    { value: "classical", name: "Classical" },
+    { value: "country", name: "Country" },
+    { value: "edm", name: "EDM" },
+    { value: "other", name: "Other" },
 ];
 
 const photoPreview = computed(() => {
@@ -151,12 +151,12 @@ const displayEventType = computed(() => {
     );
     return eventType
         ? eventType.name
-        : props.concert.event_type || "ไม่ระบุประเภท";
+        : props.concert.event_type || "N/A";
 });
 
 const displayGenre = computed(() => {
     const genre = genres.find((g) => g.value === props.concert.genre);
-    return genre ? genre.name : props.concert.genre || "ไม่ระบุแนวเพลง";
+    return genre ? genre.name : props.concert.genre || "N/A";
 });
 
 const formattedDate = (dateString) => {
@@ -259,7 +259,7 @@ const provinceName = computed(() => {
         const province = props.provinces[props.concert.province_id];
         return province ? province.name_th : "Unknown Province";
     }
-    return "ไม่ระบุจังหวัด";
+    return "N/A";
 });
 
 const googleMapsLink = computed(() => {
@@ -370,12 +370,12 @@ const followConcert = (follow) => {
                                 leave-to-class="opacity-0">
                                 <div v-if="copied"
                                     class="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-background text-xs rounded-md shadow-xl whitespace-nowrap">
-                                    คัดลอกลิงก์แล้ว!
+                                    Copied to clipboard!
                                 </div>
                             </transition>
                         </div>
                         <a v-if="props.concert.ticket_link" :href="props.concert.ticket_link" target="_blank"
-                            rel="noopener noreferrer" title="ไปยังเว็บไซต์คอนเสิร์ต">
+                            rel="noopener noreferrer" title="Ticket Link">
                             <ArrowRightStartOnRectangleIcon class="flex-none h-8 w-8 text-accent" />
                         </a>
                     </div>
@@ -385,7 +385,7 @@ const followConcert = (follow) => {
                     <div v-if="props.concert.start_sale_date" class="flex items-center font-semibold">
                         <div class="flex items-center space-x-1 mr-2 border-2 border-primary rounded-md px-2 py-1">
                             <TicketIcon class="flex-none h-6 w-6" />
-                            <span class="text-center"> จำหน่ายบัตร </span>
+                            <span class="text-center"> Start Sale </span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span>{{ startSaleDate }}</span>
@@ -399,7 +399,7 @@ const followConcert = (follow) => {
                     <div v-if="props.concert.start_show_date" class="flex items-center font-semibold">
                         <div class="flex items-center space-x-1 mr-2 border-2 border-primary rounded-md px-2 py-1">
                             <CalendarIcon class="flex-none h-6 w-6" />
-                            <span class="text-center"> วันที่แสดง </span>
+                            <span class="text-center"> Show Date </span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span>{{ startShowDate }}</span>
@@ -413,7 +413,7 @@ const followConcert = (follow) => {
                     <div v-if="props.concert.start_show_time" class="flex items-center font-semibold">
                         <div class="flex items-center space-x-1 mr-2 border-2 border-primary rounded-md px-2 py-1">
                             <ClockIcon class="flex-none h-6 w-6" />
-                            <span class="text-center"> เวลาแสดง </span>
+                            <span class="text-center"> Show Time </span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span>{{ startShowTime }}</span>
@@ -427,7 +427,7 @@ const followConcert = (follow) => {
                     <div v-if="props.concert.price_min" class="flex items-center font-semibold">
                         <div class="flex items-center space-x-1 mr-2 border-2 border-primary rounded-md px-2 py-1">
                             <BanknotesIcon class="flex-none h-6 w-6" />
-                            <span class="text-center"> ราคาบัตร </span>
+                            <span class="text-center"> Ticket Price </span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span v-if="props.concert.price_min">{{
@@ -468,7 +468,7 @@ const followConcert = (follow) => {
                                 props.concert.latitude &&
                                 props.concert.longitude
                             ">
-                                ดูในแผนที่
+                                View on Map
                                 <ArrowTopRightOnSquareIcon class="h-4 w-4 inline-block stroke-[2px] mb-2" />
                             </span>
                         </a>
@@ -480,7 +480,7 @@ const followConcert = (follow) => {
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 w-full">
             <div class="flex flex-col lg:col-span-2 p-6 bg-card rounded-md min-h-[500px]">
                 <h3 class="font-bold text-xl border-b border-text-low pb-2 mb-4">
-                    คำอธิบาย
+                    Description
                 </h3>
 
                 <div class="w-full h-fit space-y-4">
@@ -496,14 +496,14 @@ const followConcert = (follow) => {
 
                         <button v-if="hasMoreArtists" @click="showAllArtists = !showAllArtists"
                             class="ml-2 text-sm font-medium text-primary hover:text-primary-hover hover:underline transition-colors focus:outline-none">
-                            {{ showAllArtists ? 'แสดงน้อยลง' : `+${props.concert.artists.length - ARTIST_DISPLAY_LIMIT}
-                            ศิลปิน`
+                            {{ showAllArtists ? 'Show Less' : `+${props.concert.artists.length - ARTIST_DISPLAY_LIMIT}
+                            Artists`
                             }}
                         </button>
                     </div>
 
                     <div class="w-full whitespace-pre-wrap">
-                        {{ props.concert.description || "ไม่มีรายละเอียดงาน" }}
+                        {{ props.concert.description || "No description" }}
                     </div>
                 </div>
 
@@ -516,7 +516,7 @@ const followConcert = (follow) => {
                             <Link :href="editHref"
                                 class="flex justify-center px-4 py-1 items-center space-x-2 bg-secondary text-white rounded-md hover:opacity-90 transition">
                                 <PencilIcon class="w-4 h-4 stroke-current stroke-[2.5px]" />
-                                <span>แก้ไข</span>
+                                <span>Edit</span>
                             </Link>
                             <Link :href="route(deleteRouteName, {
                                 concert: props.concert.id,
@@ -524,14 +524,14 @@ const followConcert = (follow) => {
                                 " method="delete" as="button" preserve-scroll
                                 class="flex justify-center px-4 py-1 items-center space-x-2 bg-red-600 text-white rounded-md hover:opacity-90 transition">
                                 <TrashIcon class="w-4 h-4 stroke-current stroke-[2.5px]" />
-                                <span>ลบ</span>
+                                <span>Delete</span>
                             </Link>
                         </div>
                         <div v-else class="flex justify-end">
                             <a v-if="props.concert.ticket_link" :href="props.concert.ticket_link" target="_blank"
                                 rel="noopener noreferrer"
                                 class="bg-primary text-white px-6 py-2 flex items-center justify-center space-x-2 rounded-md font-semibold hover:opacity-90 transition">
-                                <span>ไปยังเว็บไซต์คอนเสิร์ต</span>
+                                <span>Ticket Link</span>
                                 <ArrowRightStartOnRectangleIcon class="w-5 h-5 stroke-[2px]" />
                             </a>
                         </div>
@@ -542,7 +542,7 @@ const followConcert = (follow) => {
             <div class="lg:col-span-1 relative">
                 <div class="flex flex-col h-[500px] lg:h-full lg:absolute lg:inset-0 px-6 py-6 bg-card rounded-md">
                     <h3 class="font-bold text-xl mb-4 border-b border-text-low pb-2 shrink-0">
-                        ความคิดเห็น
+                        Comments
                     </h3>
 
                     <div v-if="$page.props.auth.user || props.role === 'admin'" class="mb-4 shrink-0">
@@ -551,7 +551,7 @@ const followConcert = (follow) => {
                             <div class="flex gap-2">
                                 <textarea v-model="commentForm.content"
                                     class="custom-scrollbar overflow-y-auto resize-none w-full rounded-md border-text-low shadow-sm focus:border-primary focus:ring-primary text-sm bg-background"
-                                    rows="2" placeholder="แสดงความคิดเห็นของคุณ..." required></textarea>
+                                    rows="2" placeholder="Share your thoughts..." required></textarea>
                                 <div class="flex justify-end">
                                     <button type="submit" :disabled="commentForm.processing"
                                         class="bg-primary my-2 px-1 text-white text-sm font-semibold rounded-md disabled:opacity-50 transition hover:bg-primary-hover">
@@ -562,9 +562,9 @@ const followConcert = (follow) => {
                         </form>
                     </div>
                     <div v-else class="mb-4 p-3 bg-background rounded-md text-sm shrink-0">
-                        กรุณา
-                        <a :href="route('login')" class="text-primary font-bold hover:underline">เข้าสู่ระบบ</a>
-                        เพื่อแสดงความคิดเห็น
+                        Please
+                        <a :href="route('login')" class="text-primary font-bold hover:underline">log in</a>
+                        to comment.
                     </div>
 
                     <div class="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
@@ -575,7 +575,7 @@ const followConcert = (follow) => {
                                     {{ comment.author_name }}
                                     <span v-if="comment.is_author"
                                         class="ml-2 px-2 text-xs bg-primary text-white rounded font-semibold">
-                                        ผู้จัด
+                                        Organizer
                                     </span>
                                 </h4>
 
@@ -596,11 +596,11 @@ const followConcert = (follow) => {
                                 <div class="flex space-x-2">
                                     <button @click="submitEdit(comment.id)" :disabled="editForm.processing"
                                         class="px-3 py-1 bg-primary text-white text-xs rounded font-semibold transition hover:bg-primary-hover">
-                                        บันทึก
+                                        Save
                                     </button>
                                     <button @click="cancelEdit" type="button"
                                         class="px-3 py-1 bg-text-medium text-white text-xs rounded font-semibold transition hover:bg-text-high">
-                                        ยกเลิก
+                                        Cancel
                                     </button>
                                 </div>
                             </div>
@@ -621,7 +621,7 @@ const followConcert = (follow) => {
                                             <button @click="startEdit(comment)"
                                                 class="flex items-center space-x-2 w-full px-4 py-2 text-left text-sm hover:bg-background transition">
                                                 <PencilIcon class="w-4 h-4 stroke-current" />
-                                                <span>แก้ไข</span>
+                                                <span>Edit</span>
                                             </button>
                                             <button @click="
                                                 deleteComment(
@@ -630,7 +630,7 @@ const followConcert = (follow) => {
                                                 "
                                                 class="flex items-center space-x-2 w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-background transition">
                                                 <TrashIcon class="w-4 h-4 stroke-current" />
-                                                <span>ลบ</span>
+                                                <span>Delete</span>
                                             </button>
                                         </div>
                                     </template>
@@ -639,7 +639,7 @@ const followConcert = (follow) => {
                         </div>
 
                         <p v-if="!concert.comments?.length" class="text-text-medium text-sm text-center">
-                            ยังไม่มีความคิดเห็น เป็นคนแรกที่แสดงความคิดเห็นสิ!
+                            No comments yet. Be the first to comment!
                         </p>
                     </div>
                 </div>

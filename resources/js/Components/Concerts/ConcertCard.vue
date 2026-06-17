@@ -43,18 +43,18 @@ const formattedDate = computed(() => {
             year: "numeric",
         });
     }
-    return "ไม่ระบุวันที่";
+    return "N/A";
 });
 
 const formattedPrice = computed(() => {
     if (props.concert && props.concert.price_min != null) {
         if (props.concert.price_min === 0) {
-            return "ฟรี";
+            return "Free";
         }
         return new Intl.NumberFormat("th-TH", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
-        }).format(props.concert.price_min) + " บาท";
+        }).format(props.concert.price_min) + " THB";
     }
     return "?";
 });

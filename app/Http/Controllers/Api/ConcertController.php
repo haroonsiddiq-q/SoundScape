@@ -54,7 +54,6 @@ class ConcertController extends Controller
             $artistsData = $data['artists'] ?? [];
             unset($data['artists']);
 
-            // จัดการเรื่อง Province
             if (empty($data['province_id']) && !empty($data['province_name'])) {
                 $name = $data['province_name'];
                 $prov = Province::where('name_en', $name)->orWhere('name_th', $name)->first();
@@ -64,14 +63,12 @@ class ConcertController extends Controller
                 unset($data['province_name']);
             }
 
-            // ตรวจสอบข้อมูลซ้ำจาก ticket_link 
             $concert = Concert::withTrashed()->where('ticket_link', $data['ticket_link'])->first();
 
             $statusMessage = '';
             $statusCode = 200;
 
             if ($concert) {
-                // --- กรณีเจอข้อมูลเดิม (Update Mode) ---
                 if ($concert->trashed()) {
                     $concert->restore();
                 }
@@ -90,7 +87,7 @@ class ConcertController extends Controller
                     ]);
                     $groupedChanges['picture_url'] = [
                         'old' => $concert->picture_url ?? 'None',
-                        'new' => 'อัปเดตภาพโปสเตอร์ใหม่',
+                        'new' => 'Picture updated',
                     ];
                 }
 
@@ -122,8 +119,8 @@ class ConcertController extends Controller
                         $newArtistNames = Artist::whereIn('id', $newArtistIds)->pluck('name')->implode(', ');
 
                         $groupedChanges['Artists'] = [
-                            'old' => $oldArtistNames ?: 'ไม่มีศิลปิน',
-                            'new' => $newArtistNames ?: 'ไม่มีศิลปิน'
+                            'old' => $oldArtistNames ?: 'No Artists',
+                            'new' => $newArtistNames ?: 'No Artists'
                         ];
                     }
 
@@ -145,13 +142,11 @@ class ConcertController extends Controller
 
                 $statusMessage = 'Concert updated';
             } else {
-                // --- กรณีไม่เจอ (Create Mode) ---
                 $concert = Concert::create($data);
                 $statusMessage = 'Concert created';
                 $statusCode = 201;
             }
 
-            // จัดการเรื่อง Artist
             if (!empty($artistsData)) {
                 $artistIds = [];
 

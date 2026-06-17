@@ -30,10 +30,10 @@ const goToHome = () => {
 };
 
 const BusinessCategories = [
-    { value: "individual", name: "โปรโมเตอร์ส่วนบุคคล" },
-    { value: "company", name: "บริษัทจัดการศิลปิน" },
-    { value: "nightclub", name: "ไนท์คลับ/สถานที่" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "individual", name: "Individual" },
+    { value: "company", name: "Company" },
+    { value: "nightclub", name: "Nightclub/Location" },
+    { value: "other", name: "Other" },
 ];
 
 const platformPatterns = [

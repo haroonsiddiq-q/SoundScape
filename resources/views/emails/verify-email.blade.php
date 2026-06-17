@@ -27,23 +27,23 @@
         
         <div class="content">
             <div class="body-box">
-                <h1>ยินดีต้อนรับเข้าสู่สมาชิก SoundScape<br>คุณ {{ $name }}</h1>
+                <h1>Welcome to SoundScape<br>{{ $name }}</h1>
                 
-                <p>กรุณาคลิกที่ปุ่มด้านล่างเพื่อยืนยันที่อยู่อีเมลของคุณ</p>
+                <p>Please click the button below to verify your email address.</p>
                 
                 <div class="button-container">
                     <a href="{{ $url }}" class="button" style="color: #ffffff !important; text-decoration: none;">
-                        <span style="color: #ffffff;">ยืนยันที่อยู่อีเมล</span>
+                        <span style="color: #ffffff;">Verify Email Address</span>
                     </a>
                 </div>
                 
-                <p>หากคุณไม่ได้สร้างบัญชี คุณไม่จำเป็นต้องดำเนินการใดๆ เพิ่มเติม</p>
+                <p>If you did not create an account, you do not need to take any further action.</p>
                 
-                <p>ขอแสดงความนับถือ,<br>SoundScape</p>
+                <p>Best regards,<br>SoundScape</p>
                 
                 <div class="subcopy">
                     <p>
-                        หากคุณพบปัญหาในการคลิกปุ่ม "ยืนยันที่อยู่อีเมล" ให้คัดลอกและวาง URL ด้านล่างลงในเว็บเบราว์เซอร์ของคุณ: <br>
+                        If you are having trouble clicking the "Verify Email Address" button, please copy and paste the URL below into your web browser: <br>
                         <span style="word-break: break-all; color: #008be6;">{{ $url }}</span>
                     </p>
                 </div>

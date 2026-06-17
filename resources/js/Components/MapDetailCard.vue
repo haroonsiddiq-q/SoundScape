@@ -21,23 +21,23 @@ const props = defineProps({
 const isLoading = ref(false);
 
 const eventTypes = [
-    { value: "music_festival", name: "เทศกาลดนตรี" },
-    { value: "concert", name: "คอนเสิร์ต" },
-    { value: "club", name: "คลับ / ผับ" },
-    { value: "fan_meeting", name: "แฟนมีตติ้ง" },
-    { value: "folk", name: "เพลงพื้นบ้าน / หมอลำ" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "music_festival", name: "Music Festival" },
+    { value: "concert", name: "Concert" },
+    { value: "club", name: "Club / Pub" },
+    { value: "fan_meeting", name: "Fan Meeting" },
+    { value: "folk", name: "Folk Music" },
+    { value: "other", name: "Other" },
 ];
 
 const genres = [
-    { value: "pop", name: "ป๊อป" },
-    { value: "rock", name: "ร็อก" },
-    { value: "hiphop", name: "ฮิปฮอป" },
-    { value: "jazz", name: "แจ๊ส" },
-    { value: "classical", name: "คลาสสิก" },
-    { value: "country", name: "คันทรี" },
-    { value: "electronic", name: "อิเล็กทรอนิกส์" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "pop", name: "Pop" },
+    { value: "rock", name: "Rock" },
+    { value: "hiphop", name: "Hip Hop" },
+    { value: "jazz", name: "Jazz" },
+    { value: "classical", name: "Classical" },
+    { value: "country", name: "Country" },
+    { value: "edm", name: "EDM" },
+    { value: "other", name: "Other" },
 ];
 
 const pictureUrl = computed(() => {
@@ -59,7 +59,7 @@ const formattedDate = computed(() => {
             year: "numeric",
         });
     }
-    return "ไม่ระบุวันที่";
+    return "N/A";
 });
 
 const eventTypeName = computed(() => {
@@ -67,7 +67,7 @@ const eventTypeName = computed(() => {
         const event = eventTypes.find(e => e.value === props.concert.event_type);
         return event ? event.name : props.concert.event_type;
     }
-    return "ไม่ระบุประเภท";
+    return "N/A";
 });
 
 const genreName = computed(() => {
@@ -75,27 +75,27 @@ const genreName = computed(() => {
         const genre = genres.find(g => g.value === props.concert.genre);
         return genre ? genre.name : props.concert.genre;
     }
-    return "ไม่ระบุแนวเพลง";
+    return "N/A";
 });
 
 const VenueName = computed(() => {
     if (props.concert && props.concert.venue_name != null) {
-        return venue_name ? concert.vanue_name : "ไม่ระบุชื่อสถานที่";
+        return venue_name ? concert.vanue_name : "N/A";
     }
-    return "ไม่ระบุชื่อสถานที่";
+    return "N/A";
 });
 
 const formattedPrice = computed(() => {
     if (props.concert && props.concert.price_min != null) {
         if (props.concert.price_min === 0) {
-            return "ฟรี";
+            return "Free";
         }
         return new Intl.NumberFormat("th-TH", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
-        }).format(props.concert.price_min) + " บาท";
+        }).format(props.concert.price_min) + " THB";
     }
-    return "ไม่ระบุราคา";
+    return "N/A";
 });
 
 const detailUrl = computed(() => {

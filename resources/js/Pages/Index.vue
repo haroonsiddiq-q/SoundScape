@@ -18,32 +18,32 @@ const props = defineProps({
 });
 
 const eventTypes = [
-    { value: "music_festival", name: "เทศกาลดนตรี" },
-    { value: "concert", name: "คอนเสิร์ต" },
-    { value: "club", name: "คลับ / ผับ" },
-    { value: "fan_meeting", name: "แฟนมีตติ้ง" },
-    { value: "folk", name: "เพลงพื้นบ้าน / หมอลำ" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "music_festival", name: "Music Festival" },
+    { value: "concert", name: "Concert" },
+    { value: "club", name: "Club / Pub" },
+    { value: "fan_meeting", name: "Fan Meeting" },
+    { value: "folk", name: "Folk Music" },
+    { value: "other", name: "Other" },
 ];
 
 const genres = [
-    { value: "pop", name: "ป๊อป" },
-    { value: "rock", name: "ร็อก" },
-    { value: "hiphop", name: "ฮิปฮอป" },
-    { value: "jazz", name: "แจ๊ส" },
-    { value: "classical", name: "คลาสสิก" },
-    { value: "country", name: "คันทรี" },
-    { value: "electronic", name: "อิเล็กทรอนิกส์" },
-    { value: "other", name: "อื่นๆ" },
+    { value: "pop", name: "Pop" },
+    { value: "rock", name: "Rock" },
+    { value: "hiphop", name: "Hip Hop" },
+    { value: "jazz", name: "Jazz" },
+    { value: "classical", name: "Classical" },
+    { value: "country", name: "Country" },
+    { value: "edm", name: "EDM" },
+    { value: "other", name: "Other" },
 ];
 
 const sortOptions = [
-    { value: "newest", name: "ล่าสุด" },
-    { value: "name_az", name: "ชื่อ A-Z" },
-    { value: "name_za", name: "ชื่อ Z-A" },
-    { value: "date_asc", name: "วันที่ใกล้ที่สุด" },
-    { value: "price_asc", name: "ราคาต่ำสุด" },
-    { value: "price_desc", name: "ราคาสูงสุด" },
+    { value: "newest", name: "Newest" },
+    { value: "name_az", name: "Name A-Z" },
+    { value: "name_za", name: "Name Z-A" },
+    { value: "date_asc", name: "Date Closest" },
+    { value: "price_asc", name: "Price Lowest" },
+    { value: "price_desc", name: "Price Highest" },
 ];
 
 const selectedEventType = ref(props.filters?.event_type || "");
@@ -89,11 +89,11 @@ watch(
             </h2>
             <div class="mx-8 flex flex-wrap gap-2">
                 <DropdownFilter id="event_type" v-model="selectedEventType" :options="eventTypes"
-                    placeholder="ทุกประเภท" />
+                    placeholder="All Types" />
 
-                <DropdownFilter id="genre" v-model="selectedGenre" :options="genres" placeholder="ทุกแนวเพลง" />
+                <DropdownFilter id="genre" v-model="selectedGenre" :options="genres" placeholder="All Genres" />
 
-                <DropdownFilter id="sort" v-model="selectedSort" :options="sortOptions" placeholder="ล่าสุด" />
+                <DropdownFilter id="sort" v-model="selectedSort" :options="sortOptions" placeholder="Newest" />
 
                 <button v-if="
                     selectedEventType ||

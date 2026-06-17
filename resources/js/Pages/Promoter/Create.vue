@@ -50,8 +50,8 @@ const submit = () => {
         <div ref="errorSummary" v-if="Object.keys(form.errors).length" class="bg-card rounded-md mb-4 p-6">
             <div>
                 <div class="flex flex-col w-full space-y-2">
-                    <span class="text-lg font-semibold text-primary">โอ๊ะ! เกิดข้อผิดพลาด</span>
-                    <span class="text-sm">กรุณาตรวจสอบข้อมูลในช่องที่มีกรอบเส้นประอีกครั้ง</span>
+                    <span class="text-lg font-semibold text-primary">Oops! Something went wrong.</span>
+                    <span class="text-sm">Please check the fields with dashed borders.</span>
                     <ul
                         class="list-disc list-inside space-y-1 pl-5 bg-background p-4 rounded-md outline-dashed -outline-offset-4 text-primary">
                         <li v-for="(errorMessages, fieldName) in form.errors" :key="fieldName"

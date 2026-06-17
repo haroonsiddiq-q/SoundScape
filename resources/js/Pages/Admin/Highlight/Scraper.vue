@@ -82,31 +82,31 @@ onUnmounted(() => {
                 <div class="bg-card overflow-hidden shadow-sm rounded-md p-6">
                     <form @submit.prevent="startScraping">
                         <div class="space-y-2">
-                            <p class="block text-lg font-semibold mb-2">ระบบจะสแกนและดึงข้อมูลอีเวนต์ล่าสุดจาก Highlight
-                                โดยอัตโนมัติ</p>
+                            <p class="block text-lg font-semibold mb-2">The system will scrape and fetch the latest events from Highlight
+                                automatically</p>
                         </div>
 
                         <div class="mt-2">
                             <button v-if="currentJob && currentJob.status === 'running'" type="button"
                                 @click.prevent="cancelScraping"
                                 class="w-full justify-center inline-flex items-center py-2 border-2 border-primary rounded-md hover:font-bold text-sm tracking-wide transition">
-                                ยกเลิก
+                                Cancel
                             </button>
 
                             <button v-else type="submit"
                                 class="w-full justify-center inline-flex items-center py-2 border-2 border-primary rounded-md hover:font-bold text-sm tracking-wide transition">
-                                ดึงข้อมูลไฮไลท์
+                                Start Scraper
                             </button>
                         </div>
                     </form>
                 </div>
 
                 <div v-if="currentJob" class="bg-card overflow-hidden shadow-sm rounded-md p-6">
-                    <h3 class="text-lg font-semibold mb-2">สถานะ</h3>
+                    <h3 class="text-lg font-semibold mb-2">Status</h3>
 
                     <div v-if="currentJob.status === 'failed'"
                         class="bg-card rounded-md mb-4 border-2 border-dashed border-primary p-3">
-                        <span class="font-bold">Error:</span> {{ currentJob.error_message || 'กระบวนการหยุดทำงาน' }}
+                        <span class="font-bold">Error:</span> {{ currentJob.error_message || 'Process shutdown' }}
                     </div>
 
                     <div class="relative pt-1">
@@ -114,8 +114,8 @@ onUnmounted(() => {
                             <div>
                                 <span
                                     class="text-xs font-semibold inline-block py-1 px-2 rounded-md text-white bg-secondary">
-                                    {{ currentJob.status === 'running' ? 'กำลังดึงข้อมูล' : (currentJob.status ===
-                                    'completed' ? 'สำเร็จ' : 'ไม่สำเร็จ') }}
+                                    {{ currentJob.status === 'running' ? 'Fetching data' : (currentJob.status ===
+                                    'completed' ? 'Succeed' : 'Failed') }}
                                 </span>
                             </div>
                             <div class="text-right">
@@ -132,10 +132,10 @@ onUnmounted(() => {
                     </div>
 
                     <div class="mt-6">
-                        <h4 class="text-md mb-3">ข้อมูลที่ดึงมาแล้ว</h4>
+                        <h4 class="text-md mb-3">Retrieved data</h4>
                         <div v-if="!currentJob.results || currentJob.results.length === 0"
                             class="text-sm text-text-medium italic">
-                            กำลังดึงข้อมูล
+                            Fetching data
                         </div>
                         <ul v-else
                             class="bg-background rounded-md border border-card-hover max-h-60 overflow-y-auto p-2">

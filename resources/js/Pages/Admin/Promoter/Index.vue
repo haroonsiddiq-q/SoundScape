@@ -88,7 +88,7 @@ const updateVerificationStatus = (promoter) => {
                             "
                             class="flex items-center px-2 h-6 w-fit space-x-1 bg-primary hover:bg-primary-hover rounded-md transition-colors duration-200">
                             <EyeIcon class="w-4 h-4" />
-                            <span class="pb-1">ดูข้อมูล</span>
+                            <span class="pb-1">View Details</span>
                         </Link>
                     </td>
                 </tr>

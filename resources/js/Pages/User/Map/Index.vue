@@ -60,10 +60,10 @@ watch(
                             class="flex flex-col items-center justify-center h-full text-center text-text-medium p-6">
                             <MapIcon class="w-16 h-16 text-text-high mb-4" />
                             <h3 class="text-lg font-semibold text-text-high">
-                                ไม่มีคอนเสิร์ตที่เลือกไว้
+                                No concert selected
                             </h3>
-                            <p>
-                                คลิกที่หมุดบนแผนที่เพื่อดูรายละเอียดคอนเสิร์ตได้ที่นี่
+                            <p class="text-sm text-text-medium mt-2">
+                                Click on a marker on the map to view concert details here.
                             </p>
                         </div>
                     </div>

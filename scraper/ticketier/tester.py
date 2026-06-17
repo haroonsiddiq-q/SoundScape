@@ -81,7 +81,7 @@ def get_page_destination_data(url, headless=True, timeout=10):
             if event_type_element.text == "MUSIC FESTIVALS":
                 event_type = "เทศกาลดนตรี"
             elif event_type_element.text == "CONCERTS":
-                event_type = "คอนเสิร์ต"
+                event_type = "Concert"
         except:
             event_type = None
 
@@ -133,7 +133,7 @@ def get_page_destination_data(url, headless=True, timeout=10):
             
             prices = []
             for m in matches:
-                # ลบ comma ออกแล้วแปลงเป็น int
+                # Delete comma ออกแล้วแปลงเป็น int
                 clean_num = m.replace(",", "")
                 # เช็คว่าเป็นตัวเลขล้วนๆ (ป้องกันกรณีเจอเครื่องหมายแปลกๆ)
                 if clean_num.isdigit():
@@ -224,7 +224,7 @@ def get_page_destination_data(url, headless=True, timeout=10):
             if len(sale_parts) == 3:
                 day = int(sale_parts[0])
                 month_str = sale_parts[1]
-                year = int(sale_parts[2]) # ปีเป็น ค.ศ. อยู่แล้ว (2025) ไม่ต้องลบ
+                year = int(sale_parts[2]) # ปีเป็น ค.ศ. อยู่แล้ว (2025) ไม่ต้องDelete
                 
                 month = months_map.get(month_str, 1) # แปลงชื่อเดือนเป็นตัวเลข
                 

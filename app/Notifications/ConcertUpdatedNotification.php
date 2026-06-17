@@ -15,7 +15,7 @@ class ConcertUpdatedNotification extends Notification
     public $concert;
     public $changes;
 
-    protected $hiddenFields = ['description', 'location', 'ticket_link']; // Field ที่ไม่ต้องการให้แสดงข้อมูลเต็ม
+    protected $hiddenFields = ['description', 'location', 'ticket_link'];
 
     public function __construct($concert, array $changes)
     {
@@ -94,7 +94,7 @@ class ConcertUpdatedNotification extends Notification
         }, $this->hiddenFields);
 
         return (new MailMessage)
-            ->subject("ข้อมูลคอนเสิร์ต \"{$oldName}\" ถูกเปลี่ยนแปลง")
+            ->subject("Concert \"{$oldName}\" has been updated")
             ->view('emails.concert-updated', [
                 'userName' => $notifiable->name,
                 'concertName' => $oldName,
@@ -110,15 +110,15 @@ class ConcertUpdatedNotification extends Notification
         $url = route('concert.detail', $this->concert->id);
         
         $message = LineFlexMessageBuilder::make()
-            ->setAltText("ข้อมูลคอนเสิร์ต \"{$oldName}\" ถูกเปลี่ยนแปลง")
-            ->setHeader('อัปเดตข้อมูลคอนเสิร์ต', $oldName)
-            ->setFooterButton('ดูรายละเอียดผ่านเว็บไซต์', $url);
+            ->setAltText("Concert \"{$oldName}\" has been updated")
+            ->setHeader('Concert Information Updated', $oldName)
+            ->setFooterButton('View Details on Website', $url);
 
         foreach ($this->changes as $field => $change) {
             $thaiField = $this->translateField($field);
             
             if (in_array($field, $this->hiddenFields)) {
-                $message->addSimpleChangeBox($thaiField, 'มีการเปลี่ยนแปลงข้อมูล');
+                $message->addSimpleChangeBox($thaiField, 'Information has been updated');
             } else {
                 $message->addChangeBox($thaiField, $change['old'], $change['new']);
             }
@@ -130,7 +130,7 @@ class ConcertUpdatedNotification extends Notification
     public function toArray($notifiable)
     {
         $fieldsUpdated = count($this->changes);
-        $summary = "มีการอัปเดตข้อมูล {$fieldsUpdated} รายการ";
+        $summary = "There are {$fieldsUpdated} updates to the concert information";
         $oldName = $this->getOriginalConcertName();
 
         return [
@@ -144,7 +144,7 @@ class ConcertUpdatedNotification extends Notification
     private function translateField($field)
     {
         $map = [
-            'name' => 'ชื่อคอนเสิร์ต',
+            'name' => 'ชื่อConcert',
             'description' => 'รายละเอียด',
             'event_type' => 'ประเภทงาน',
             'genre' => 'แนวเพลง',
@@ -162,9 +162,9 @@ class ConcertUpdatedNotification extends Notification
             'end_show_date' => 'วันที่สิ้นสุดการแสดง',
             'end_show_time' => 'เวลาสิ้นสุดการแสดง',
             'start_datetime' => 'วันและเวลาที่เริ่มแสดง',
-            'ticket_link' => 'ลิงก์ซื้อบัตร',
-            'Poster Picture' => 'รูปภาพโปสเตอร์',
-            'Artists' => 'รายชื่อศิลปิน',
+            'ticket_link' => 'Linkซื้อบัตร',
+            'Poster Picture' => 'Pictureโปสเตอร์',
+            'Artists' => 'รายArtist Name',
         ];
 
         return $map[$field] ?? ucwords(str_replace('_', ' ', $field));

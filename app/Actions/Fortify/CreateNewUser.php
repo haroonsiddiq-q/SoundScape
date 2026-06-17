@@ -19,7 +19,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        // ตรวจสอบและเปลี่ยน +66 เป็น 0
         if (isset($input['phone']) && str_starts_with($input['phone'], '+66')) {
             $input['phone'] = '0' . substr($input['phone'], 3);
         }

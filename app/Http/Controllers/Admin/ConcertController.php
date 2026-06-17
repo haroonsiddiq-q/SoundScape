@@ -71,7 +71,7 @@ class ConcertController extends Controller
                         $longitude = $data[0]['lon'];
                     } else {
                         throw ValidationException::withMessages([
-                            'venue_name' => 'ไม่พบตำแหน่งนี้ ตรวจสอบชื่อสถานที่และจังหวัดอีกครั้ง หรือใช้แผนที่เพื่อปักหมุดเอง',
+                            'venue_name' => 'Not found this location. Please check the venue name and province again, or use the map to pin the location manually.',
                         ]);
                     }
                 }
@@ -177,7 +177,7 @@ class ConcertController extends Controller
                         $longitude = $data[0]['lon'];
                     } else {
                         throw ValidationException::withMessages([
-                            'venue_name' => 'ไม่พบตำแหน่งนี้ ตรวจสอบชื่อสถานที่และจังหวัดอีกครั้ง หรือใช้แผนที่เพื่อปักหมุดเอง',
+                            'venue_name' => 'Not found this location. Please check the venue name and province again, or use the map to pin the location manually.',
                         ]);
                     }
                 }

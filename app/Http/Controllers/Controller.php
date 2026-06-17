@@ -33,8 +33,8 @@ abstract class Controller
                     $newArtistNames = Artist::whereIn('id', $newArtistIds)->pluck('name')->implode(', ');
 
                     $groupedChanges['Artists'] = [
-                        'old' => $oldArtistNames ?: 'ไม่มีศิลปิน',
-                        'new' => $newArtistNames ?: 'ไม่มีศิลปิน'
+                        'old' => $oldArtistNames ?: 'No Artists',
+                        'new' => $newArtistNames ?: 'No Artists'
                     ];
                 }
                 continue;
@@ -68,7 +68,7 @@ abstract class Controller
                     'new_value' => $value,
                 ], $actorDetails));
 
-                $excludedFields = ['genre', 'event_type', 'price_max', 'end_show_date', 'end_show_time']; // Field ที่ไม่ต้องการให้มีการแจ้งเตือน
+                $excludedFields = ['genre', 'event_type', 'price_max', 'end_show_date', 'end_show_time'];
 
                 if (!in_array($key, $excludedFields)) {
                     $groupedChanges[$key] = [

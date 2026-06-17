@@ -4,11 +4,11 @@ namespace App\Services;
 
 class LineFlexMessageBuilder
 {
-    protected $altText = 'การแจ้งเตือนใหม่';
-    protected $headerText = 'แจ้งเตือน';
+    protected $altText = 'New notification';
+    protected $headerText = 'Notification';
     protected $title = '';
     protected $bodyContents = [];
-    protected $buttonLabel = 'ดูรายละเอียด';
+    protected $buttonLabel = 'View Details';
     protected $buttonUrl = '';
     protected $primaryColor = '#252c3c';
 
@@ -45,14 +45,14 @@ class LineFlexMessageBuilder
                 ],
                 [
                     'type' => 'text',
-                    'text' => "เดิม: {$oldValue}",
+                    'text' => "Old: {$oldValue}",
                     'size' => 'xs',
                     'color' => '#888888',
                     'wrap' => true
                 ],
                 [
                     'type' => 'text',
-                    'text' => "ใหม่: {$newValue}",
+                    'text' => "New: {$newValue}",
                     'size' => 'sm',
                     'weight' => 'bold',
                     'color' => '#333333',
@@ -132,7 +132,7 @@ class LineFlexMessageBuilder
                     'layout' => 'vertical',
                     'spacing' => 'lg',
                     'contents' => empty($this->bodyContents)
-                        ? [['type' => 'text', 'text' => 'ไม่มีรายละเอียดเพิ่มเติม']]
+                        ? [['type' => 'text', 'text' => 'No additional details']]
                         : $this->bodyContents
                 ],
                 'footer' => [

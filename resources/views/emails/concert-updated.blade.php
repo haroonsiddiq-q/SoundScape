@@ -32,9 +32,9 @@
         
         <div class="content">
             <div class="body-box">
-                <h1>การแจ้งเตือนการอัปเดตคอนเสิร์ต<br>สวัสดีคุณ {{ $userName }}</h1>
+                <h1>Concert Update Notification<br>Hi! {{ $userName }}</h1>
                 
-                <p>คอนเสิร์ตที่คุณติดตาม <strong>"{{ $concertName }}"</strong> ได้รับการอัปเดตรายละเอียดดังนี้:</p>
+                <p>Your Followed Concert <strong>"{{ $concertName }}"</strong> has been updated with the following changes:</p>
                 
                 <div class="changes-list">
                     <ul>
@@ -42,7 +42,7 @@
                             <li>
                                 <strong>{{ $thaiField }}:</strong><br>
                                 @if(in_array($thaiField, $hiddenFields))
-                                    <span class="new-value">มีการเปลี่ยนแปลงข้อมูล</span>
+                                    <span class="new-value">Has been updated</span>
                                 @else
                                     <span class="old-value">{{ $change['old'] }}</span> &rarr; 
                                     <span class="new-value">{{ $change['new'] }}</span>
@@ -54,13 +54,13 @@
                 
                 <div class="button-container">
                     <a href="{{ $url }}" class="button" style="color: #ffffff !important; text-decoration: none;">
-                        <span style="color: #ffffff;">ดูรายละเอียดคอนเสิร์ต</span>
+                        <span style="color: #ffffff;">View Concert Details</span>
                     </a>
                 </div>
                 
                 <div class="subcopy">
                     <p>
-                        หากคุณพบปัญหาในการคลิกปุ่ม "ดูรายละเอียดคอนเสิร์ต" ให้คัดลอกและวาง URL ด้านล่างลงในเว็บเบราว์เซอร์ของคุณ: <br>
+                        If you are having trouble clicking the "View Concert Details" button, please copy and paste the URL below into your web browser: <br>
                         <span style="word-break: break-all; color: #008be6;">{{ $url }}</span>
                     </p>
                 </div>

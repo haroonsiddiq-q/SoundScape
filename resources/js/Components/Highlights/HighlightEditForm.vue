@@ -60,10 +60,10 @@ const photoPreview = computed(() => {
 const is_concert = ref(props.highlight.concert_id ? true : false);
 
 const fieldLabels = {
-    title: "ชื่อไฮไลท์",
-    picture_url: "รูปภาพ",
-    concert_id: "คอนเสิร์ต",
-    link: "ลิงก์",
+    title: "Name",
+    picture_url: "Picture",
+    concert_id: "Concert",
+    link: "Link",
 };
 
 watch(
@@ -89,8 +89,8 @@ watch(
         class="max-w-xl lg:max-w-full mx-auto bg-card lg:shadow-xl rounded-md mb-4 p-6">
         <div>
             <div class="flex flex-col w-full space-y-2">
-                <span class="text-lg font-semibold text-primary">โอ๊ะ! เกิดข้อผิดพลาด</span>
-                <span class="text-sm">กรุณาตรวจสอบข้อมูลในช่องที่มีกรอบเส้นประอีกครั้ง</span>
+                <span class="text-lg font-semibold text-primary">Oops! Something went wrong.</span>
+                <span class="text-sm">Please check the fields with dashed borders.</span>
                 <span></span>
                 <ul
                     class="list-disc list-inside space-y-1 pl-5 bg-background p-4 rounded-md outline-dashed -outline-offset-4 text-primary">
@@ -121,7 +121,7 @@ watch(
             :class="{
                 'outline-dashed outline-primary -outline-offset-4 rounded-md':
                     props.form.errors.title,
-            }" placeholder="ชื่อไฮไลท์คอนเสิร์ต" />
+            }" placeholder="NameConcert" />
 
         <div class="flex flex-col-reverse lg:flex-row gap-2 lg:gap-0 items-center">
             <div class="w-full">
@@ -150,7 +150,7 @@ watch(
                 </div>
             </div>
             <div class="flex justify-end w-full lg:w-fit items-center space-x-2">
-                <span class="text-sm font-medium whitespace-nowrap">ลิงก์ไปยังคอนเสิร์ต?</span>
+                <span class="text-sm font-medium whitespace-nowrap">Link to Concert?</span>
                 <button type="button" @click="is_concert = !is_concert"
                     class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full focus:outline-none cursor-pointer transition-colors ease-in-out duration-200"
                     :class="is_concert ? 'bg-primary' : 'bg-background'">

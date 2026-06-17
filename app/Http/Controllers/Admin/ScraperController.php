@@ -117,7 +117,7 @@ class ScraperController extends Controller
     {
         \Illuminate\Support\Facades\DB::table('scraper_jobs')->where('id', $id)->update([
             'status' => 'failed',
-            'error_message' => 'ยกเลิก'
+            'error_message' => 'Cancelled'
         ]);
 
         $killSwitchPath = storage_path("logs/cancel_{$id}.txt");

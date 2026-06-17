@@ -33,7 +33,7 @@ class GeneralAlertNotification extends Notification
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)->subject('แจ้งเตือนจาก SoundScape')->line($this->message);
+        return (new MailMessage)->subject('Notification from SoundScape')->line($this->message);
     }
 
     public function toLine(object $notifiable): LineMessage

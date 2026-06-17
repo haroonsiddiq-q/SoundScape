@@ -131,7 +131,7 @@ def get_page_destination_data(url, headless=True, timeout=10):
         try:
             price_element = WebDriverWait(driver, 10).until(
                 EC.visibility_of_element_located(
-                    (By.XPATH, "//*[contains(@class, 'eventDescHeader')]//*[contains(text(), 'THB') or contains(text(), 'บาท')]")
+                    (By.XPATH, "//*[contains(@class, 'eventDescHeader')]//*[contains(text(), 'THB') or contains(text(), 'THB')]")
                 )
             )
             price_text = price_element.text
@@ -241,7 +241,7 @@ def get_page_destination_data(url, headless=True, timeout=10):
 
         return {
             "name": name,
-            "event_type": "คอนเสิร์ต",
+            "event_type": "Concert",
             "description": description,
             "picture_url": image_src,
             "start_show_date": str(date_start) if date_start else None,
